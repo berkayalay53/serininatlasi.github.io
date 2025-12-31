@@ -20,21 +20,41 @@
       min-height: 100vh;
       text-align: center;
       margin: 0;
+      /* Eğer style.css yoksa bile karanlık kalsın diye garantiye alıyoruz */
+      background-color: #0f1113; 
+      color: #e9e6df;
     }
     .music-card {
       background: rgba(255,255,255,0.02);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 22px;
       padding: 40px;
       max-width: 500px;
       width: 90%;
       margin: 20px auto;
-      box-shadow: var(--shadow);
+      box-shadow: 0 16px 50px rgba(0,0,0,0.45);
       animation: fadeIn 1.2s ease-out;
     }
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
+    }
+    .btn-home {
+        display: inline-block;
+        margin-top: 30px;
+        font-family: "Inter", sans-serif;
+        font-size: 13px;
+        text-decoration: none;
+        color: rgba(255,255,255,0.7);
+        border: 1px solid rgba(255,255,255,0.2);
+        padding: 10px 24px;
+        border-radius: 50px;
+        transition: all 0.3s ease;
+    }
+    .btn-home:hover {
+        background: rgba(255,255,255,0.1);
+        border-color: rgba(255,255,255,0.5);
+        color: #fff;
     }
   </style>
 </head>
@@ -43,14 +63,13 @@
   <div class="grain" aria-hidden="true"></div>
 
   <div class="music-card">
-    <h1 style="font-family: var(--serif); font-size: 28px; margin: 0 0 24px; color: #fff;">
+    <h1 style="font-family: 'Crimson Pro', serif; font-size: 28px; margin: 0 0 24px; color: #fff;">
       Serinin Atlası
     </h1>
 
     <iframe 
-      data-testid="embed-iframe" 
       style="border-radius:12px" 
-      src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M?utm_source=generator" 
+      src="https://open.spotify.com/embed/playlist/5MFxuN7MpLvneCjX9vEhOA?utm_source=generator" 
       width="100%" 
       height="352" 
       frameBorder="0" 
@@ -58,12 +77,13 @@
       allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
       loading="lazy">
     </iframe>
-    <p style="font-family: var(--serif); font-size: 16px; color: var(--muted); margin-top: 24px; font-style: italic;">
+
+    <p style="font-family: 'Crimson Pro', serif; font-size: 16px; color: #bcb6aa; margin-top: 24px; font-style: italic;">
       “Seni bir daha hiç görmeyecek olmanın sesiydi bu.”
     </p>
     
-    <div style="margin-top: 30px;">
-      <a href="https://berkayalay53.github.io/" class="btn btn--enter" style="font-size: 12px; padding: 10px 20px; text-decoration: none; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px; color: #fff;">
+    <div>
+      <a href="https://berkayalay53.github.io/" class="btn-home">
         Ana Sayfaya Dön
       </a>
     </div>
