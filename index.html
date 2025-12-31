@@ -1,116 +1,164 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Serinin Atlası</title>
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Serinin Atlası</title>
 
-  <style>
-    /* --- GEMİNİN GÖVDESİ (TASARIM) --- */
-    :root{
-      --bg: #0f1113; 
-      --text:#e9e6df; 
-      --serif: "Crimson Pro", serif; 
-      --sans: "Inter", sans-serif;
-    }
-    
-    html, body { height: 100%; margin: 0; padding: 0; }
-    body { 
-      background: var(--bg); 
-      color: var(--text); 
-      font-family: var(--sans); 
-      overflow: hidden; 
-    }
-    
-    /* GİRİŞ EKRANI */
-    .intro-screen {
-      position: fixed; inset: 0; z-index: 1000; display: flex;
-      flex-direction: column; align-items: center; justify-content: center; 
-      background: var(--bg);
-      transition: opacity 1.2s ease, visibility 1.2s;
-    }
-    .intro-bg {
-      position: absolute; inset: -20px; 
-      background-image: url('https://images.unsplash.com/photo-1478720568477-152d9b164e63?q=80&w=2000&auto=format&fit=crop');
-      background-size: cover; background-position: center;
-      filter: blur(15px) brightness(0.5); 
-      transform: scale(1.1);
-    }
-    .intro-content { position: relative; z-index: 2; text-align: center; color: #fff; animation: fadeIn 1.5s ease-out; }
-    
-    .intro-title {
-      font-family: var(--serif); font-size: clamp(3rem, 6vw, 5rem); margin: 0 0 25px;
-      font-weight: 300; text-shadow: 0 10px 30px rgba(0,0,0,0.5); letter-spacing: -1px;
-    }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 
-    .btn--enter {
-      padding: 16px 40px; font-size: 14px; text-transform: uppercase; letter-spacing: 2px;
-      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.25);
-      border-radius: 50px; color: #fff; cursor: pointer; transition: all 0.3s ease;
-      font-family: var(--sans); backdrop-filter: blur(5px);
-    }
-    .btn--enter:hover { background: rgba(255,255,255,0.2); transform: translateY(-2px); }
+<style>
+:root{
+  --bg:#0f1113;
+  --text:#e9e6df;
+  --serif:"Crimson Pro", serif;
+  --sans:"Inter", sans-serif;
+}
 
-    /* ANA EKRAN */
-    .main {
-      display: none; opacity: 0; 
-      height: 100vh; width: 100vw;
-      align-items: center; justify-content: center; 
-    }
-    .main.visible { display: flex !important; animation: fadeIn 2s ease-out forwards; }
-    
-    /* MÜZİK KUTUSU ÇERÇEVESİ */
-    .player-box {
-      width: min(500px, 90%);
-      background: transparent; /* Arkaplanı şeffaf yaptım ki kutu sırıtmasın */
-      border-radius: 12px;
-      box-shadow: 0 30px 60px rgba(0,0,0,0.6); 
-    }
+/* ZEMİN — DERİN SESSİZLİK */
+html,body{
+  margin:0;
+  height:100%;
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--sans);
+  overflow:hidden;
+}
 
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
-  </style>
+/* GRAIN — YAŞANMIŞLIK */
+.grain{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  opacity:.12;
+  mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+  z-index:9999;
+}
+
+/* KAPI — GİRİŞ */
+.intro{
+  position:fixed;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:var(--bg);
+  transition:opacity 1.2s ease, visibility 1.2s;
+  z-index:10;
+}
+
+.intro-bg{
+  position:absolute;
+  inset:-20px;
+  background:url("https://images.unsplash.com/photo-1478720568477-152d9b164e63?q=80&w=2000&auto=format&fit=crop") center/cover;
+  filter:blur(18px) brightness(.45);
+  transform:scale(1.1);
+}
+
+.intro-content{
+  position:relative;
+  text-align:center;
+  animation:fadeIn 1.6s ease-out;
+}
+
+.intro h1{
+  font-family:var(--serif);
+  font-size:clamp(3rem,6vw,5rem);
+  font-weight:300;
+  margin-bottom:26px;
+  letter-spacing:-1px;
+  text-shadow:0 10px 30px rgba(0,0,0,.6);
+}
+
+.enter{
+  padding:15px 38px;
+  border-radius:50px;
+  border:1px solid rgba(255,255,255,.25);
+  background:rgba(255,255,255,.08);
+  color:#fff;
+  font-size:13px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.enter:hover{
+  background:rgba(255,255,255,.18);
+  transform:translateY(-2px);
+}
+
+/* SAHNE — MÜZİK */
+.main{
+  display:none;
+  opacity:0;
+  height:100%;
+  width:100%;
+  align-items:center;
+  justify-content:center;
+}
+
+.main.visible{
+  display:flex;
+  animation:fadeIn 2s ease-out forwards;
+}
+
+.player{
+  width:min(500px,90%);
+  background:transparent;
+  box-shadow:0 30px 70px rgba(0,0,0,.65);
+}
+
+/* ANİMASYON */
+@keyframes fadeIn{
+  from{opacity:0; transform:translateY(15px);}
+  to{opacity:1; transform:translateY(0);}
+}
+</style>
 </head>
+
 <body>
 
-  <div class="intro-screen" id="introScreen">
-    <div class="intro-bg"></div>
-    <div class="intro-content">
-      <h1 class="intro-title">Serinin Atlası</h1>
-      <button class="btn--enter" onclick="enterSite()">Giriş</button>
-    </div>
+<div class="grain"></div>
+
+<!-- KAPI -->
+<section class="intro" id="intro">
+  <div class="intro-bg"></div>
+  <div class="intro-content">
+    <h1>Serinin Atlası</h1>
+    <button class="enter" onclick="enter()">Giriş</button>
   </div>
+</section>
 
-  <main class="main" id="mainContent">
-    <div class="player-box">
-      
-      <iframe 
-        data-testid="embed-iframe" 
-        style="border-radius:12px" 
-        src="https://open.spotify.com/embed/playlist/5MfxuN7MpLvnejX9ViihGA?utm_source=generator" 
-        width="100%" 
-        height="352" 
-        frameBorder="0" 
-        allowfullscreen 
-        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-        loading="lazy">
-      </iframe>
+<!-- SAHNE -->
+<main class="main" id="main">
+  <div class="player">
+    <iframe
+      src="https://open.spotify.com/embed/playlist/5MfxuN7MpLvnejX9ViihGA?utm_source=generator"
+      width="100%"
+      height="352"
+      style="border-radius:12px"
+      frameborder="0"
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+      loading="lazy">
+    </iframe>
+  </div>
+</main>
 
-    </div>
-  </main>
+<script>
+function enter(){
+  const intro=document.getElementById("intro");
+  const main=document.getElementById("main");
 
-  <script>
-    function enterSite() {
-      const intro = document.getElementById('introScreen');
-      const main = document.getElementById('mainContent');
-      intro.style.opacity = '0';
-      intro.style.visibility = 'hidden';
-      setTimeout(() => { main.classList.add('visible'); }, 300);
-    }
-  </script>
+  intro.style.opacity="0";
+  intro.style.visibility="hidden";
+
+  setTimeout(()=>main.classList.add("visible"),300);
+}
+</script>
 
 </body>
 </html>
