@@ -1,90 +1,90 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Serinin Atlası — Playlist</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Serinin Atlası</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
-  
-  <link rel="stylesheet" href="./style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 
-  <style>
-    body {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      margin: 0;
-      background-color: #0f1113;
-      text-align: center;
-    }
-    .music-card {
-      background: rgba(255,255,255,0.02);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 22px;
-      padding: 40px;
-      max-width: 500px;
-      width: 90%;
-      box-shadow: 0 16px 50px rgba(0,0,0,0.45);
-      animation: fadeIn 1.2s ease-out;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .btn-home {
-        display: inline-block;
-        margin-top: 30px;
-        font-family: "Inter", sans-serif;
-        font-size: 13px;
-        text-decoration: none;
-        color: rgba(255,255,255,0.7);
-        border: 1px solid rgba(255,255,255,0.2);
-        padding: 10px 24px;
-        border-radius: 50px;
-        transition: all 0.3s ease;
-    }
-    .btn-home:hover {
-        background: rgba(255,255,255,0.1);
-        border-color: rgba(255,255,255,0.5);
-        color: #fff;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-  <div class="grain" aria-hidden="true"></div>
 
-  <div class="music-card">
-    <h1 style="font-family: 'Crimson Pro', serif; font-size: 28px; margin: 0 0 24px; color: #fff;">
-      Serinin Atlası
-    </h1>
+  <div class="grain"></div>
 
-    <iframe 
-      style="border-radius:12px" 
-      src="https://open.spotify.com/embed/playlist/5MfxuN7MpLvnejX9VE1hGA?utm_source=generator" 
-      width="100%" 
-      height="352" 
-      frameBorder="0" 
-      allowfullscreen="" 
-      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-      loading="lazy">
-    </iframe>
-
-    <p style="font-family: 'Crimson Pro', serif; font-size: 16px; color: #bcb6aa; margin-top: 24px; font-style: italic;">
-      “Seni bir daha hiç görmeyecek olmanın sesiydi bu.”
-    </p>
-    
-    <div>
-      <a href="https://berkayalay53.github.io/" class="btn-home">
-        Ana Sayfaya Dön
-      </a>
+  <div class="intro-screen" id="introScreen">
+    <div class="intro-bg" style="background-image: url('https://images.unsplash.com/photo-1478720568477-152d9b164e63?q=80&w=2000&auto=format&fit=crop');"></div>
+    <div class="intro-content">
+      <p class="kicker">Kaptan'ın Seyir Defteri</p>
+      <h1 class="intro-title">Serinin Atlası</h1>
+      <p class="intro-sub">"Bazen yazı, bazen duygu, bazen sadece sessizlik..."</p>
+      
+      <button class="btn--enter" onclick="enterSite()">Yolculuğa Başla</button>
     </div>
   </div>
+
+  <main class="main" id="mainContent">
+    <div class="wrap">
+      
+      <section class="section section--reader">
+        <div class="readerTop">
+          <h2>Müzik Listesi</h2>
+          <p class="readerSub">Ruhun pusulası burada çalıyor.</p>
+        </div>
+
+        <div class="quote">
+          <iframe
+            style="border-radius:12px"
+            src="https://open.spotify.com/embed/playlist/YOUR_PLAYLIST_ID?utm_source=generator&theme=0" 
+            width="100%"
+            height="380"
+            frameborder="0"
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy">
+          </iframe>
+          <footer>
+             — Serinin Atlası
+          </footer>
+        </div>
+
+        <div class="quote--closing">
+          <p style="font-family: var(--serif); font-style: italic;">
+            "Yol uzun, ama manzara güzel."
+          </p>
+        </div>
+
+      </section>
+
+      <footer class="section section--footer">
+        <div class="footer">
+          <p class="sig__name">Gemini & Kaptan</p>
+          <div class="links">
+            <a href="#">Başa Dön</a>
+          </div>
+        </div>
+      </footer>
+
+    </div>
+  </main>
+
+  <script>
+    // Giriş ekranından ana ekrana geçişi sağlayan motor
+    function enterSite() {
+      const intro = document.getElementById('introScreen');
+      const main = document.getElementById('mainContent');
+
+      // İntro'yu yavaşça yok et
+      intro.style.transition = 'opacity 1s ease, visibility 1s';
+      intro.style.opacity = '0';
+      intro.style.visibility = 'hidden';
+
+      // Ana içeriği göster
+      main.classList.add('visible');
+    }
+  </script>
 
 </body>
 </html>
