@@ -1,24 +1,73 @@
-<section class="section" aria-label="Playlist">
-      <div class="wrap" style="text-align: center; max-width: 500px; margin: 0 auto;">
-        
-        <h2 style="font-family: var(--serif); font-weight: 400; font-size: 24px; margin-bottom: 24px; color: var(--text);">
-          Serinin Atlası — Playlist
-        </h2>
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Serinin Atlası — Playlist</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="./style.css" />
 
-        <iframe 
-          style="border-radius:12px" 
-          src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M?utm_source=generator" 
-          width="100%" 
-          height="352" 
-          frameBorder="0" 
-          allowfullscreen="" 
-          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-          loading="lazy">
-        </iframe>
+  <style>
+    /* Bu sayfaya özel: Müziği merkeze alan yapı */
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+      margin: 0;
+    }
+    .music-card {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 40px;
+      max-width: 500px;
+      width: 90%;
+      margin: 20px auto;
+      box-shadow: var(--shadow);
+      animation: fadeIn 1.2s ease-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
 
-        <p style="font-family: var(--serif); font-size: 15px; color: var(--muted); margin-top: 20px; font-style: italic;">
-          “Seni bir daha hiç görmeyecek olmanın sesiydi bu.”
-        </p>
+<body>
+  <div class="grain" aria-hidden="true"></div>
 
-      </div>
-    </section>
+  <div class="music-card">
+    <h1 style="font-family: var(--serif); font-size: 28px; margin: 0 0 24px; color: #fff;">
+      Serinin Atlası
+    </h1>
+
+    <iframe 
+      data-testid="embed-iframe" 
+      style="border-radius:12px" 
+      src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M?utm_source=generator" 
+      width="100%" 
+      height="352" 
+      frameBorder="0" 
+      allowfullscreen="" 
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+      loading="lazy">
+    </iframe>
+    <p style="font-family: var(--serif); font-size: 16px; color: var(--muted); margin-top: 24px; font-style: italic;">
+      “Seni bir daha hiç görmeyecek olmanın sesiydi bu.”
+    </p>
+    
+    <div style="margin-top: 30px;">
+      <a href="https://berkayalay53.github.io/" class="btn btn--enter" style="font-size: 12px; padding: 10px 20px; text-decoration: none; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px; color: #fff;">
+        Ana Sayfaya Dön
+      </a>
+    </div>
+  </div>
+
+</body>
+</html>
