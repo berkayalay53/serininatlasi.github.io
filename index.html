@@ -17,7 +17,7 @@
   --sans:"Inter", sans-serif;
 }
 
-/* ZEMİN — DERİN SESSİZLİK */
+/* Zemin */
 html,body{
   margin:0;
   height:100%;
@@ -27,18 +27,18 @@ html,body{
   overflow:hidden;
 }
 
-/* GRAIN — YAŞANMIŞLIK */
+/* Grain */
 .grain{
   position:fixed;
   inset:0;
   pointer-events:none;
-  opacity:.12;
+  opacity:.14;
   mix-blend-mode:overlay;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
   z-index:9999;
 }
 
-/* KAPI — GİRİŞ */
+/* INTRO */
 .intro{
   position:fixed;
   inset:0;
@@ -52,51 +52,54 @@ html,body{
 
 .intro-bg{
   position:absolute;
-  inset:-20px;
-  background:url("https://images.unsplash.com/photo-1478720568477-152d9b164e63?q=80&w=2000&auto=format&fit=crop") center/cover;
-  filter:blur(18px) brightness(.45);
+  inset:0;
+  background:url("./serininatlasi.jpg") center/cover no-repeat;
+  filter:blur(18px) brightness(.4);
   transform:scale(1.1);
 }
 
 .intro-content{
   position:relative;
   text-align:center;
-  animation:fadeIn 1.6s ease-out;
+  animation:fadeIn 1.4s ease-out;
 }
 
 .intro h1{
   font-family:var(--serif);
-  font-size:clamp(3rem,6vw,5rem);
+  font-size:clamp(3.5rem,8vw,6rem);
   font-weight:300;
-  margin-bottom:26px;
-  letter-spacing:-1px;
+  margin:0 0 12px;
   text-shadow:0 10px 30px rgba(0,0,0,.6);
 }
 
+.intro p{
+  margin:0 0 36px;
+  font-style:italic;
+  opacity:.85;
+}
+
 .enter{
-  padding:15px 38px;
+  padding:15px 40px;
   border-radius:50px;
   border:1px solid rgba(255,255,255,.25);
   background:rgba(255,255,255,.08);
   color:#fff;
-  font-size:13px;
+  font-size:14px;
   letter-spacing:2px;
   text-transform:uppercase;
   cursor:pointer;
   transition:.3s;
 }
-
 .enter:hover{
   background:rgba(255,255,255,.18);
   transform:translateY(-2px);
 }
 
-/* SAHNE — MÜZİK */
+/* SAHNE */
 .main{
   display:none;
   opacity:0;
   height:100%;
-  width:100%;
   align-items:center;
   justify-content:center;
 }
@@ -108,14 +111,12 @@ html,body{
 
 .player{
   width:min(500px,90%);
-  background:transparent;
   box-shadow:0 30px 70px rgba(0,0,0,.65);
 }
 
-/* ANİMASYON */
 @keyframes fadeIn{
   from{opacity:0; transform:translateY(15px);}
-  to{opacity:1; transform:translateY(0);}
+  to{opacity:1; transform:none;}
 }
 </style>
 </head>
@@ -124,20 +125,21 @@ html,body{
 
 <div class="grain"></div>
 
-<!-- KAPI -->
+<!-- GİRİŞ -->
 <section class="intro" id="intro">
   <div class="intro-bg"></div>
   <div class="intro-content">
     <h1>Serinin Atlası</h1>
-    <button class="enter" onclick="enter()">Giriş</button>
+    <p>playlist</p>
+    <button class="enter" onclick="enter()">Devam Et</button>
   </div>
 </section>
 
-<!-- SAHNE -->
+<!-- MÜZİK -->
 <main class="main" id="main">
   <div class="player">
     <iframe
-      src="https://open.spotify.com/embed/playlist/5MfxuN7MpLvnejX9ViihGA?utm_source=generator"
+      src="https://open.spotify.com/embed/playlist/5MfxuN7MpLvnejX9ViihGA"
       width="100%"
       height="352"
       style="border-radius:12px"
@@ -150,13 +152,13 @@ html,body{
 
 <script>
 function enter(){
-  const intro=document.getElementById("intro");
-  const main=document.getElementById("main");
+  const intro = document.getElementById("intro");
+  const main  = document.getElementById("main");
 
-  intro.style.opacity="0";
-  intro.style.visibility="hidden";
+  intro.style.opacity = "0";
+  intro.style.visibility = "hidden";
 
-  setTimeout(()=>main.classList.add("visible"),300);
+  setTimeout(()=> main.classList.add("visible"),300);
 }
 </script>
 
