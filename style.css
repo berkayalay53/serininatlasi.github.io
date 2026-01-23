@@ -10,7 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
-/* SENİN GÖNDERDİĞİN CSS AYARLARI BURADA */
+
 :root{
   --bg:#0f1113;
   --text:#e9e6df;
@@ -18,7 +18,7 @@
   --sans:"Inter", system-ui, sans-serif;
 }
 
-/* ===== TEMEL ===== */
+
 *{ box-sizing:border-box; }
 
 html,body{
@@ -30,7 +30,7 @@ html,body{
   overflow:hidden;
 }
 
-/* ===== GRAIN (KARINCALANMA) ===== */
+
 .grain{
   position:fixed;
   inset:0;
@@ -41,7 +41,7 @@ html,body{
   z-index:9999;
 }
 
-/* ===== GİRİŞ (KAPI) ===== */
+
 .intro{
   position:fixed;
   inset:0;
@@ -56,7 +56,7 @@ html,body{
 .intro-bg{
   position:absolute;
   inset:0;
-  /* Kaptanım, resim dosyasını burada çağırdım */
+  
   background:url('./serininatlasi.jpg') center/cover no-repeat;
   filter:blur(18px) brightness(.4);
   transform:scale(1.1);
@@ -85,7 +85,7 @@ html,body{
   font-family: var(--serif);
 }
 
-/* ===== BUTON ===== */
+
 .enter{
   padding:15px 40px;
   border-radius:50px;
@@ -104,7 +104,7 @@ html,body{
   transform:translateY(-2px);
 }
 
-/* ===== SAHNE ===== */
+
 .main{
   display:none;
   opacity:0;
@@ -125,7 +125,7 @@ html,body{
   border-radius: 12px;
 }
 
-/* ===== ANİMASYON ===== */
+
 @keyframes fadeIn{
   from{ opacity:0; transform:translateY(15px); }
   to{ opacity:1; transform:none; }
@@ -149,7 +149,7 @@ html,body{
 <main class="main" id="main">
   <div class="player">
     <iframe
-      src="https://open.spotify.com/embed/playlist/5MfxuN7MpLvnejX9ViihGA?utm_source=generator"
+      src="https://open.spotify.com/embed/playlist/5FYHflAhHlES0AkvfKDIwW?utm_source=generator" 
       width="100%"
       height="352"
       style="border-radius:12px"
