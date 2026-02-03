@@ -1,8 +1,8 @@
-/* === AYARLAR (Diğer kitaplarla aynı standart) === */
+/* === AYARLAR === */
 :root {
   --bg: #0f1113;
   --text: #e9e6df;
-  --accent: #d4a373; /* PAS RENGİ */
+  --accent: #d4a373; /* Senin Pas Rengin */
   --serif: "Crimson Pro", serif;
   --sans: "Inter", sans-serif;
 }
@@ -15,7 +15,7 @@ html, body {
   background: var(--bg);
   color: var(--text);
   font-family: var(--sans);
-  overflow: hidden; /* Sayfa kaymasın, sabit dursun */
+  overflow: hidden;
 }
 
 /* === GRAIN (KUMLANMA) EFEKTİ === */
@@ -44,7 +44,6 @@ html, body {
 .intro-bg {
   position: absolute;
   inset: -20px;
-  /* Arka plan resmi burada tanımlı */
   background: url('./serininatlasi.jpg') center/cover no-repeat;
   filter: blur(25px) brightness(0.4);
   transform: scale(1.1);
@@ -96,8 +95,9 @@ html, body {
   backdrop-filter: blur(5px);
 }
 
+/* Pas rengi entegrasyonu */
 .enter-btn:hover {
-  background: var(--accent); /* PAS RENGİ */
+  background: var(--accent); 
   color: var(--bg);
   border-color: var(--accent);
   transform: translateY(-2px);
@@ -125,8 +125,6 @@ html, body {
   border-radius: 12px;
   box-shadow: 0 40px 80px rgba(0,0,0,0.6);
   margin-bottom: 25px;
-  background: #000;
-  overflow: hidden; /* Köşelerin yuvarlak kalması için */
 }
 
 /* Geri Dön Linki */
@@ -141,7 +139,7 @@ html, body {
 }
 
 .back-link:hover {
-  color: var(--accent); /* PAS RENGİ */
+  color: var(--accent);
   letter-spacing: 1px;
 }
 
