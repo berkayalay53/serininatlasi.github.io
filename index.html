@@ -3,158 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Serinin Atlası</title>
+<title>Serinin Atlası — Berkay Alay</title>
+
+<meta property="og:title" content="Serinin Atlası — Berkay Alay">
+<meta property="og:description" content="Ulaşamadığın bir bakış, söyleyemediğin bir cümle ve hâlâ bekleyen bir şarkı. Hepsi burada sustu.">
+<meta property="og:image" content="https://berkayalay53.github.io/serininatlasi.github.io/serininatlasi.jpg">
+<meta property="og:url" content="https://berkayalay53.github.io/serininatlasi.github.io/">
+<meta property="og:type" content="music.playlist">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="./serininatlasi.jpg" type="image/jpeg">
+<link rel="apple-touch-icon" href="./serininatlasi.jpg">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 
-<style>
+<link rel="stylesheet" href="./style.css">
 
-:root{
-  --bg: #0f1113;
-  --text: #e9e6df;
-  --serif: "Crimson Pro", serif;
-  --sans: "Inter", sans-serif;
-}
-
-*{ box-sizing: border-box; }
-
-html, body{
-  margin: 0;
-  height: 100%;
-  background: var(--bg);
-  color: var(--text);
-  font-family: var(--sans);
-  overflow: hidden;
-}
-
-
-.grain{
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  opacity: 0.12;
-  mix-blend-mode: overlay;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
-  z-index: 9999;
-}
-
-
-.intro {
-  position: fixed;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--bg);
-  z-index: 10;
-  transition: opacity 1.2s ease, visibility 1.2s;
-}
-
-.intro-bg {
-  position: absolute;
-  inset: -20px;
-  background: url('./serininatlasi.jpg') center/cover no-repeat;
-  filter: blur(25px) brightness(0.4);
-  transform: scale(1.1);
-}
-
-.intro-content {
-  position: relative;
-  text-align: center;
-  z-index: 2;
-  animation: fadeIn 1.5s ease-out;
-  color: #fff;
-  padding: 0 20px;
-}
-
-.intro-title {
-  font-family: var(--serif);
-  font-weight: 300;
-  font-size: clamp(3rem, 7vw, 5rem);
-  margin: 0;
-  line-height: 1.1;
-  text-shadow: 0 10px 30px rgba(0,0,0,0.5);
-}
-
-.intro-sub {
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: clamp(1.1rem, 4vw, 1.4rem);
-  margin: 15px auto 45px;
-  opacity: 0.9;
-  letter-spacing: 0.5px;
-  color: rgba(255,255,255,0.85);
-  max-width: 600px;
-  line-height: 1.5;
-}
-
-.enter-btn {
-  padding: 14px 42px;
-  border-radius: 50px;
-  border: 1px solid rgba(255,255,255,0.3);
-  background: rgba(255,255,255,0.05);
-  color: #fff;
-  font-family: var(--sans);
-  font-size: 13px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(5px);
-}
-
-.enter-btn:hover {
-  background: rgba(255,255,255,0.15);
-  transform: translateY(-2px);
-  border-color: rgba(255,255,255,0.6);
-}
-
-
-.main {
-  display: none;
-  opacity: 0;
-  height: 100vh;
-  width: 100vw;
-  flex-direction: column; 
-  align-items: center;
-  justify-content: center;
-}
-
-.main.visible {
-  display: flex !important;
-  animation: fadeIn 2s ease-out forwards;
-}
-
-.player-box {
-  width: min(500px, 90%);
-  border-radius: 12px;
-  box-shadow: 0 40px 80px rgba(0,0,0,0.6);
-  margin-bottom: 25px; 
-}
-
-
-.back-link {
-  color: rgba(255,255,255,0.4);
-  text-decoration: none;
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: 0.95rem;
-  transition: all 0.3s ease;
-  letter-spacing: 0.5px;
-}
-
-.back-link:hover {
-  color: rgba(255,255,255,0.9);
-  letter-spacing: 1px;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-</style>
 </head>
 
 <body>
@@ -187,7 +53,6 @@ html, body{
     <a href="https://berkayalay53.github.io/" class="back-link">
       ← Ana Sayfaya Dön
     </a>
-
   </main>
 
   <script>
