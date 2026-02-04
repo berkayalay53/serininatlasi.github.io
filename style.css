@@ -168,3 +168,32 @@ html, body {
 .back-link:hover {
   color: var(--accent);
 }
+/* === EKSİK OLAN PARÇA: KALICI ARKA PLAN === */
+.fixed-bg {
+  position: fixed;
+  inset: 0;
+  background-image: url('./serininatlasi.jpg');
+  background-size: cover;
+  background-position: center;
+  filter: blur(25px) brightness(0.4); /* Intro ile aynı bulanıklık */
+  z-index: -1;
+  transform: scale(1.1);
+}
+
+/* Intro ekranı stilleri (HTML id değiştiği için güncelleme) */
+#intro-screen {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  z-index: 10;
+  transition: opacity 1.2s ease, visibility 1.2s;
+}
+
+#intro-screen.fade-out {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
