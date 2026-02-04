@@ -8,65 +8,66 @@
 <meta property="og:title" content="Serinin Atlası — Berkay Alay">
 <meta property="og:description" content="Ulaşamadığın bir bakış, söyleyemediğin bir cümle ve hâlâ bekleyen bir şarkı. Hepsi burada sustu.">
 <meta property="og:image" content="https://berkayalay53.github.io/serininatlasi.github.io/serininatlasi.jpg">
-<meta property="og:url" content="https://berkayalay53.github.io/serininatlasi.github.io/">
-<meta property="og:type" content="music.playlist">
-<meta name="twitter:card" content="summary_large_image">
-
 <link rel="icon" href="./serininatlasi.jpg" type="image/jpeg">
-<link rel="apple-touch-icon" href="./serininatlasi.jpg">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="./style.css">
-
 </head>
 
 <body>
 
-  <div class="grain"></div>
-
-  <section class="intro" id="intro">
+  <div id="intro-screen">
     <div class="intro-bg"></div>
+    
     <div class="intro-content">
       <h1 class="intro-title">Serinin Atlası</h1>
       <p class="intro-sub">"Ulaşamadığın bir bakış, söyleyemediğin bir cümle ve hâlâ bekleyen bir şarkı. Hepsi burada sustu."</p>
-      <button class="enter-btn" onclick="enterSite()">DEVAM ET</button>
+      <button id="start-btn">DİNLE</button>
     </div>
-  </section>
+  </div>
 
-  <main class="main" id="main">
+  <div class="fixed-bg"></div>
+  <div class="grain"></div>
+
+  <main class="main" id="mainPage">
+    
     <div class="player-box">
       <iframe 
-        src="https://open.spotify.com/embed/playlist/5FYHflAhHlES0AkvfKDIwW?utm_source=generator"  
+        src="https://open.spotify.com/embed/playlist/0?utm_source=generator&theme=0" 
         width="100%" 
         height="352" 
-        style="border-radius:12px" 
         frameBorder="0" 
         allowfullscreen="" 
         allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-        loading="lazy">
+        loading="lazy"
+        style="border-radius: 8px;">
       </iframe>
     </div>
 
     <a href="https://berkayalay53.github.io/" class="back-link">
-      ← Ana Sayfaya Dön
+      ← Kütüphaneye Dön
     </a>
+
   </main>
 
   <script>
-    function enterSite() {
-      const intro = document.getElementById('intro');
-      const main = document.getElementById('main');
+    const introScreen = document.getElementById('intro-screen');
+    const startBtn = document.getElementById('start-btn');
+    const mainPage = document.getElementById('mainPage');
+
+    startBtn.addEventListener('click', () => {
+      // Intro perdesini kaldır
+      introScreen.classList.add('fade-out');
       
-      intro.style.opacity = '0';
-      intro.style.visibility = 'hidden';
-      
+      // İçeriği göster
       setTimeout(() => {
-        main.classList.add('visible');
-      }, 300);
-    }
+        mainPage.classList.add('visible');
+        introScreen.style.display = 'none'; // Tamamen sil
+      }, 1000);
+    });
   </script>
 
 </body>
