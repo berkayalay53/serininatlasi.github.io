@@ -24,54 +24,53 @@
 
 <body>
 
-  <div id="intro-screen">
+  <div class="grain"></div>
+
+  <section class="intro" id="intro">
     <div class="intro-bg"></div>
-    
     <div class="intro-content">
       <h1 class="intro-title">Serinin Atlası</h1>
       <p class="intro-sub">"Ulaşamadığın bir bakış, söyleyemediğin bir cümle ve hâlâ bekleyen bir şarkı. Hepsi burada sustu."</p>
-      <button id="start-btn" class="enter-btn">DEVAM ET</button>
+      <button class="enter-btn" id="enterBtn">DEVAM ET</button>
     </div>
-  </div>
+  </section>
 
-  <div class="fixed-bg"></div>
-  <div class="grain"></div>
-
-  <main class="main" id="mainPage">
-    
+  <main class="main" id="main">
     <div class="player-box">
+      
       <iframe 
-        src="https://open.spotify.com/embed/playlist/5FYHflAhHlES0AkvfKDIwW?si=7b8f7ae4135c4e7f?utm_source=generator&theme=0" 
+        style="border-radius:12px" 
+        src="https://open.spotify.com/embed/playlist/1i63k1vfvB01T2vvlT1v0V?utm_source=generator&theme=0" 
         width="100%" 
         height="352" 
-        style="border-radius:12px" 
         frameBorder="0" 
         allowfullscreen="" 
         allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
         loading="lazy">
       </iframe>
+
     </div>
 
     <a href="https://berkayalay53.github.io/" class="back-link">
       ← Ana Sayfaya Dön
     </a>
-
   </main>
 
   <script>
-    const introScreen = document.getElementById('intro-screen');
-    const startBtn = document.getElementById('start-btn');
-    const mainPage = document.getElementById('mainPage');
+    // Geçiş Animasyonu
+    const enterBtn = document.getElementById('enterBtn');
+    const intro = document.getElementById('intro');
+    const main = document.getElementById('main');
 
-    startBtn.addEventListener('click', () => {
-      // Intro perdesini kaldır
-      introScreen.classList.add('fade-out');
+    enterBtn.addEventListener('click', () => {
+      // 1. Intro'yu yavaşça yok et
+      intro.style.opacity = '0';
+      intro.style.visibility = 'hidden';
       
-      // İçeriği göster
+      // 2. Ana ekranı göster
       setTimeout(() => {
-        mainPage.classList.add('visible');
-        introScreen.style.display = 'none'; // Tamamen sil
-      }, 1000);
+        main.classList.add('visible');
+      }, 500); // Yarım saniye bekle
     });
   </script>
 
