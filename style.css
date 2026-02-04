@@ -2,23 +2,22 @@
 :root {
   --bg: #0f1113;
   --text: #e9e6df;
-  --accent: #d4a373; /* Senin Pas Rengin */
+  --accent: #d4a373; /* Pas Rengi */
   --serif: "Crimson Pro", serif;
   --sans: "Inter", sans-serif;
 }
 
-* { box-sizing: border-box; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
 html, body {
-  margin: 0;
   height: 100%;
   background: var(--bg);
   color: var(--text);
   font-family: var(--sans);
-  overflow: hidden;
+  overflow: hidden; /* Sayfa kaymasın, sabit dursun */
 }
 
-/* === GRAIN (KUMLANMA) EFEKTİ === */
+/* === GRAIN (KUMLANMA) === */
 .grain {
   position: fixed;
   inset: 0;
@@ -29,121 +28,143 @@ html, body {
   z-index: 9999;
 }
 
-/* === GİRİŞ EKRANI (INTRO) === */
-.intro {
+/* === GİRİŞ EKRANI (DİĞER KİTAPLARLA AYNI) === */
+#intro-screen {
   position: fixed;
   inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10000;
   display: flex;
   align-items: center;
   justify-content: center;
+  text-align: center;
   background: var(--bg);
-  z-index: 10;
-  transition: opacity 1.2s ease, visibility 1.2s;
+  transition: opacity 1.5s ease-in-out, visibility 1.5s;
 }
 
+/* Intro Arka Planı (Flu) */
 .intro-bg {
   position: absolute;
   inset: -20px;
-  background: url('./serininatlasi.jpg') center/cover no-repeat;
-  filter: blur(25px) brightness(0.4);
+  background-image: url('./serininatlasi.jpg');
+  background-size: cover;
+  background-position: center;
+  filter: blur(12px) brightness(0.4); /* Diğer kitaplarla eşitlendi */
   transform: scale(1.1);
+  z-index: 1;
 }
 
+/* Intro İçeriği (Net) */
 .intro-content {
   position: relative;
-  text-align: center;
   z-index: 2;
-  animation: fadeIn 1.5s ease-out;
-  color: #fff;
-  padding: 0 20px;
+  padding: 2rem;
+  max-width: 700px;
+  animation: introFadeIn 1.5s ease;
 }
 
 .intro-title {
   font-family: var(--serif);
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  color: #fff;
   font-weight: 300;
-  font-size: clamp(3rem, 7vw, 5rem);
-  margin: 0;
   line-height: 1.1;
-  text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  margin-bottom: 20px;
+  text-shadow: 0 5px 30px rgba(0,0,0,0.6);
 }
 
 .intro-sub {
   font-family: var(--serif);
-  font-style: italic;
-  font-size: clamp(1.1rem, 4vw, 1.4rem);
-  margin: 15px auto 45px;
-  opacity: 0.9;
-  letter-spacing: 0.5px;
+  font-size: 1.2rem;
   color: rgba(255,255,255,0.85);
-  max-width: 600px;
-  line-height: 1.5;
+  font-style: italic;
+  margin-bottom: 40px;
+  line-height: 1.6;
 }
 
-/* Giriş Butonu */
-.enter-btn {
-  padding: 14px 42px;
-  border-radius: 50px;
-  border: 1px solid rgba(255,255,255,0.3);
-  background: rgba(255,255,255,0.05);
+/* Buton */
+#start-btn {
+  background: rgba(255, 255, 255, 0.08);
   color: #fff;
+  border: 1px solid rgba(255,255,255,0.25);
+  padding: 14px 40px;
   font-family: var(--sans);
-  font-size: 13px;
+  font-size: 0.9rem;
   letter-spacing: 2px;
   text-transform: uppercase;
+  border-radius: 50px;
   cursor: pointer;
-  transition: all 0.3s ease;
   backdrop-filter: blur(5px);
+  transition: all 0.4s ease;
 }
 
-/* Pas rengi entegrasyonu */
-.enter-btn:hover {
-  background: var(--accent); 
-  color: var(--bg);
+#start-btn:hover {
+  background: var(--accent);
   border-color: var(--accent);
+  color: #000;
   transform: translateY(-2px);
   box-shadow: 0 0 20px rgba(212, 163, 115, 0.4);
 }
 
-/* === ANA EKRAN (PLAYER) === */
-.main {
-  display: none;
+#intro-screen.fade-out {
   opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+@keyframes introFadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* === ANA EKRAN VE SABİT ARKA PLAN === */
+
+/* Kalıcı Arka Plan (Bu kısım eksikti) */
+.fixed-bg {
+  position: fixed;
+  inset: 0;
+  background-image: url('./serininatlasi.jpg');
+  background-size: cover;
+  background-position: center;
+  filter: blur(15px) brightness(0.25); /* İçerik okunsun diye biraz daha karanlık */
+  z-index: -1;
+  transform: scale(1.1);
+}
+
+.main {
+  position: relative;
   height: 100vh;
-  width: 100vw;
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  opacity: 0;
+  transition: opacity 2s ease;
+  z-index: 5;
 }
 
-.main.visible {
-  display: flex !important;
-  animation: fadeIn 2s ease-out forwards;
-}
+.main.visible { opacity: 1; }
 
 .player-box {
   width: min(500px, 90%);
   border-radius: 12px;
-  box-shadow: 0 40px 80px rgba(0,0,0,0.6);
-  margin-bottom: 25px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.7);
+  background: rgba(0,0,0,0.2);
+  backdrop-filter: blur(10px);
+  padding: 10px;
+  border: 1px solid rgba(255,255,255,0.1);
+  margin-bottom: 30px;
 }
 
-/* Geri Dön Linki */
 .back-link {
-  color: rgba(255,255,255,0.4);
+  color: rgba(255,255,255,0.5);
   text-decoration: none;
   font-family: var(--serif);
-  font-style: italic;
   font-size: 0.95rem;
-  transition: all 0.3s ease;
-  letter-spacing: 0.5px;
+  transition: 0.3s;
 }
 
 .back-link:hover {
   color: var(--accent);
-  letter-spacing: 1px;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
 }
