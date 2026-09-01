@@ -25,6 +25,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="./style.css">
+<link rel="preload" href="./style.css" as="style">
+<link rel="preload" href="./cover.jpg" as="image">
+<link rel="preload" href="./kralkaybederse.jpg" as="image">
 </head>
 
 <body>
@@ -81,27 +84,25 @@
     });
   </script>
 <script>
-  // === SAYFA YÜKLENME YÖNETİCİSİ ===
-  
-  // 1. Tarayıcı önbelleğinden (Geri butonuyla) geliniyorsa sayfayı yenileme sorunu olmasın
-  window.addEventListener("pageshow", function(event) {
-    if (event.persisted) {
-      document.body.classList.add('loaded');
-      document.body.style.opacity = "1";
-    }
-  });
+// === SAYFA YÜKLENME VE PERDE YÖNETİCİSİ ===
 
-  // 2. Her şey yüklendiğinde (Resimler, CSS) perdeyi aç
-  window.addEventListener('load', () => {
-    document.body.classList.add('loaded'); // CSS'teki .loaded opacity:1 yapar
-    // Eğer toz efekti varsa başlat (Yoksa hata vermez, geçer)
-    if (typeof createDust === "function") createDust(); 
-  });
-  
-  // 3. Güvenlik Sübabı: Eğer 3 saniye içinde yüklenmezse zorla aç (Karanlıkta kalmasınlar)
-  setTimeout(() => {
+// 1. Geri butonuyla (tarayıcı önbelleğinden) gelindiğinde kilitlenmeyi önler
+window.addEventListener("pageshow", function(event) {
+  if (event.persisted) {
     document.body.classList.add('loaded');
-  }, 3000);
+    document.body.style.opacity = "1";
+  }
+});
+
+// 2. Kapak görseli ve tüm kaynaklar hazır olduğunda perdeyi açar
+window.addEventListener('load', () => {
+  document.body.classList.add('loaded');
+});
+
+// 3. Güvenlik Sübabı: Bağlantı yavaşsa kullanıcı karanlıkta kalmasın
+setTimeout(() => {
+  document.body.classList.add('loaded');
+}, 2500);
 </script>
 </body>
 </html>
